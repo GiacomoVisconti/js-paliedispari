@@ -2,7 +2,7 @@
 
 //! FUNCTIONS
 
-//Creo una funzione per effettuare il controllo della scelta dell'utente
+//*Creo una funzione per effettuare il controllo della scelta dell'utente
 function user_pari_dispari_control(choice){
     while (choice !== "pari" && choice !== "dispari") {
         choice = prompt(`Scrivi meglio (Pari o Dispari) la tua scelta per favore, prima hai scritto ${choice}`)
@@ -10,15 +10,20 @@ function user_pari_dispari_control(choice){
     return choice
 }
 
-//Creo una funzione per effettuare il controllo della scelta del numero dell'utente
-function user_number_control(numb){
-    while (!(numb <= 5 && numb > 0)) {
-        numb = Number(prompt("Simpatico...Scegli un numero compreso tra 1 e 5 per favore"))     
+//*Creo una funzione per effettuare il controllo della scelta del numero dell'utente
+function user_number_control(numb, min, max){
+    while (!(numb <= max && numb >= min)) {
+        numb = Number(prompt(`Simpatico...Scegli un numero compreso tra ${min} e ${max} per favore`))     
     } 
     return numb
 }
 
-//Creo una funzione per effettuare il controllo del risultato
+//*Creo una funzione per generare un numero random
+function random_integer(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+//*Creo una funzione per effettuare il controllo del risultato
 function pari_dispari_result(numb1, numb2, choice){
 
     //Dichiaro nella funzione la variabile del risultato della somma dei due numeri
@@ -30,21 +35,21 @@ function pari_dispari_result(numb1, numb2, choice){
         alert(`Hai vinto! 
             Numero del PC: ${numb1}
             Il tuo numero: ${numb2}
-            Scelta: ${choice}
+            Scelta: ${choice.toUpperCase()}
             Risultato della somma: ${result}`);
     
     } else if (result % 2 > 0 && choice == "dispari") {
         alert(`Hai vinto! 
             Numero del PC: ${numb1}
             Il tuo numero: ${numb2}
-            Scelta: ${choice}
+            Scelta: ${choice.toUpperCase()}
             Risultato della somma: ${result}`);
         
     } else {
         alert(`Hai perso! 
             Numero del PC: ${numb1}
             Il tuo numero: ${numb2}
-            Scelta: ${choice}
+            Scelta: ${choice.toUpperCase()}
             Risultato della somma: ${result}`);
         
     }
@@ -55,7 +60,7 @@ function pari_dispari_result(numb1, numb2, choice){
 let user_choice = prompt("Scegli tra Pari o Dispari").trim().toLocaleLowerCase()
 
 //eseguo la funzione del controllo della scelta
-user_pari_dispari_control(user_choice)
+
 
 //sovrascrivo il dato venuto fuori dal controllo
 user_choice = user_pari_dispari_control(user_choice)
@@ -65,15 +70,15 @@ user_choice = user_pari_dispari_control(user_choice)
 let user_number = Number(prompt("Scegli un numero compreso tra 1 e 5"))
 
 //Eseguo la funzione del controllo dell'input del numero scelto dall'utente
-user_number_control(user_number)
+
 
 //sovrascrivo il dato venuto fuori dal controllo
-user_number = user_number_control(user_number)
+user_number = user_number_control(user_number,1,5)
 
 
 
 //Dichiaro la variabile del numero generato dal computer
-let pc_number = Math.floor(Math.random()*5 + 1);
+let pc_number = random_integer(1,5)
 console.log(user_choice, user_number, pc_number);
 
 
