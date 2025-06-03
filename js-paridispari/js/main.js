@@ -1,1 +1,84 @@
+/* Pari e Dispari L’utente sceglie pari o dispari e inserisce un numero da 1 a 5. Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione). Sommiamo i due numeri Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione) Dichiariamo chi ha vinto. */
+
+//! FUNCTIONS
+
+//Creo una funzione per effettuare il controllo della scelta dell'utente
+function user_pari_dispari_control(choice){
+    while (choice !== "pari" && choice !== "dispari") {
+        choice = prompt(`Scrivi meglio (Pari o Dispari) la tua scelta per favore, prima hai scritto ${choice}`)
+    }
+    return choice
+}
+
+//Creo una funzione per effettuare il controllo della scelta del numero dell'utente
+function user_number_control(numb){
+    while (!(numb <= 5 && numb > 0)) {
+        numb = Number(prompt("Simpatico...Scegli un numero compreso tra 1 e 5 per favore"))     
+    } 
+    return numb
+}
+
+//Creo una funzione per effettuare il controllo del risultato
+function pari_dispari_result(numb1, numb2, choice){
+
+    //Dichiaro nella funzione la variabile del risultato della somma dei due numeri
+    let result = numb1 + numb2;
+
+    //Effettuo il controllo del risultato, rispetto alla scelta dell'utente e la somma dei due numeri
+    if (result % 2 === 0 && choice == "pari"){
+        
+        alert(`Hai vinto! 
+            Numero del PC: ${numb1}
+            Il tuo numero: ${numb2}
+            Scelta: ${choice}
+            Risultato della somma: ${result}`);
+    
+    } else if (result % 2 > 0 && choice == "dispari") {
+        alert(`Hai vinto! 
+            Numero del PC: ${numb1}
+            Il tuo numero: ${numb2}
+            Scelta: ${choice}
+            Risultato della somma: ${result}`);
+        
+    } else {
+        alert(`Hai perso! 
+            Numero del PC: ${numb1}
+            Il tuo numero: ${numb2}
+            Scelta: ${choice}
+            Risultato della somma: ${result}`);
+        
+    }
+}
+//! END FUNCTIONS
+
+//Dichiaro la variabile scelta e la faccio riempire dall'utente tramite prompt
+let user_choice = prompt("Scegli tra Pari o Dispari").trim().toLocaleLowerCase()
+
+//eseguo la funzione del controllo della scelta
+user_pari_dispari_control(user_choice)
+
+//sovrascrivo il dato venuto fuori dal controllo
+user_choice = user_pari_dispari_control(user_choice)
+
+
+//chiedo allo user di scegliere un numero
+let user_number = Number(prompt("Scegli un numero compreso tra 1 e 5"))
+
+//Eseguo la funzione del controllo dell'input del numero scelto dall'utente
+user_number_control(user_number)
+
+//sovrascrivo il dato venuto fuori dal controllo
+user_number = user_number_control(user_number)
+
+
+
+//Dichiaro la variabile del numero generato dal computer
+let pc_number = Math.floor(Math.random()*5 + 1);
+console.log(user_choice, user_number, pc_number);
+
+
+//Eseguo la funzione per effettuare il controllo sul risultato
+pari_dispari_result(pc_number,user_number ,user_choice)
+
+
 
