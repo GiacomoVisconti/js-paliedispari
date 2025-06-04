@@ -12,7 +12,7 @@
     function palindrome(word){
         let reverse_word = ""
 
-          for(let i = word.length -1; i >= 0; i--){
+        for(let i = word.length -1; i >= 0; i--){
             let single_letter = word.charAt(i)
 
             reverse_word = reverse_word + single_letter  
@@ -37,7 +37,7 @@
         // //Stampo il messaggio appropriato
         // alert("La parola NON è palindroma")
         // }
-}
+    }
     
     
     palindrome(user_word)

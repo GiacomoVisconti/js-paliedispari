@@ -2,7 +2,13 @@
 
 //! FUNCTIONS
 
-//*Creo una funzione per effettuare il controllo della scelta dell'utente
+//?Creo una funzione per effettuare il controllo della scelta dell'utente
+/**
+ * This function controls the user input (string), between two options.
+ * Asks to the user to input the choice until is wrote correctly.
+ * @param {string} choice 
+ * @returns {string}
+ */
 function user_pari_dispari_control(choice){
     while (choice !== "pari" && choice !== "dispari") {
         choice = prompt(`Scrivi meglio (Pari o Dispari) la tua scelta per favore, prima hai scritto ${choice}`)
@@ -10,7 +16,15 @@ function user_pari_dispari_control(choice){
     return choice
 }
 
-//*Creo una funzione per effettuare il controllo della scelta del numero dell'utente
+//?Creo una funzione per effettuare il controllo della scelta del numero dell'utente
+/**
+ * This function controls the user input (number), between a minimum and maximum. 
+ * Asks to the user to input the number until the number is between a minimum and maximum.
+ * @param {number} numb user input
+ * @param {number} min minimum number 
+ * @param {number} max maximum number
+ * @returns {number} overwrite the user choice
+ */
 function user_number_control(numb, min, max){
     while (!(numb <= max && numb >= min)) {
         numb = Number(prompt(`Simpatico...Scegli un numero compreso tra ${min} e ${max} per favore`))     
@@ -19,6 +33,12 @@ function user_number_control(numb, min, max){
 }
 
 //*Creo una funzione per generare un numero random
+/**
+ * This function generates a random number between a min and max both included
+ * @param {number} min 
+ * @param {number} max 
+ * @returns {number}
+ */
 function random_integer(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
